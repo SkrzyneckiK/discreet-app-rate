@@ -385,7 +385,7 @@ public class AppRate {
             // It's the first time the time is elapsed
             editor.putBoolean(KEY_ELAPSED_TIME, true);
             if (debug) LogD("First time after the time is elapsed");
-            if (settings.getInt(KEY_COUNT, 5) > initialLaunchCount) {
+            if (settings.getInt(KEY_COUNT, initialLaunchCount) != initialLaunchCount) {
                 if (debug) LogD("Initial count passed. Resetting to initialLaunchCount");
                 // Initial count passed. Resetting to initialLaunchCount
                 editor.putInt(KEY_COUNT, initialLaunchCount);
@@ -422,6 +422,7 @@ public class AppRate {
         editor.putInt(KEY_COUNT, 0);
         editor.putBoolean(KEY_CLICKED, false);
         editor.putLong(KEY_LAST_CRASH, 0L);
+        editor.putBoolean(KEY_ELAPSED_TIME, false)
         commitEditor();
     }
 
